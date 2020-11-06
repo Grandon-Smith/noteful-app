@@ -1,6 +1,10 @@
 .App {
   text-align: center;
   display: block;
+  width: auto;
+  margin: 2% 2%;
+  outline: blue dotted 2px;
+  height: 95vh;
 }
 
 

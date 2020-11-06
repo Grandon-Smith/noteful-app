@@ -1,22 +1,27 @@
-import { render } from '@testing-library/react';
-import React from 'react';
+import { render } from '@testing-library/react'
+import React from 'react'
 import './Body.css'
 import Folders from '../Folders/Folders'
 import Notes from '../Notes/Notes'
+import AddNote from '../AddNote/AddNote'
+import AddFolder from '../AddFolder/AddFolder'
 
-function Body() {
 
+function Body(props) {
+{console.log(props.data)}
     return (
-        <div>
-            <nav>
-                <Folders/>
-                <Folders/>
-                <Folders/>
+        <div className="group">
+            <nav className="folder-list">
+                <Folders 
+                    data={props.data}/>
+                
+                <AddFolder/>
             </nav>
-            <section>
-                <Notes/>
-                <Notes/>
-                <Notes/>
+            <section className="note-list">
+                <Notes 
+                    data={props.data}/>
+                
+                <AddNote/>
             </section>
             
         </div>

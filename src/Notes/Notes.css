@@ -1,0 +1,26 @@
+.wrapper {
+    width: auto;
+    margin: 2%;
+    text-align: left;
+    border: 2px black dotted;
+}
+
+.note-title {
+    margin: 5px 10px;
+}
+
+.note-bottom {
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px black dotted; */
+    margin: 0 10px;
+    padding: 0;
+    align-items: center;
+}
+
+.delete-btn {
+    font-size: 1rem;
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 5px;
+}

@@ -1,0 +1,10 @@
+.folder {
+    background-color: pink;
+    margin: 5px;
+}
+
+.folder-button {
+    color: black;
+    font-size: 1.9rem;
+    width: 100%;
+}

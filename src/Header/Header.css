@@ -1,7 +1,9 @@
 .header {
     border-bottom: solid black 2px;
+    width: 100%;
 }
 
 h1 {
     font-size: 3rem;
+    width: 100%;
 }
