@@ -8,12 +8,13 @@
 
 .folder-list {
     width: 35%;
-    border-right: blue 2px solid;
-    height: 40rem;
+    /* border-right: blue 2px solid;
+    height: 100%; */
 }
 
 .note-list {
     width: 100%;
-    margin: 5px;
-    border: black solid 2px;
+    border-left: black 2px solid;
+    height: 100%;
+    /* border: black solid 2px; */
 }

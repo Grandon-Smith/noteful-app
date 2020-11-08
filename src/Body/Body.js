@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+// import { render } from '@testing-library/react'
 import React from 'react'
 import './Body.css'
 import Folders from '../Folders/Folders'
@@ -8,12 +8,18 @@ import AddFolder from '../AddFolder/AddFolder'
 
 
 function Body(props) {
-{console.log(props.data)}
+
+
+
+//  console.log(props.folderClick)
+// {console.log(props.data)}
     return (
         <div className="group">
             <nav className="folder-list">
                 <Folders 
-                    data={props.data}/>
+                    data={props.data}
+                    folderClick={props.folderClick}
+                />
                 
                 <AddFolder/>
             </nav>
@@ -26,6 +32,7 @@ function Body(props) {
             
         </div>
     )
+
 }
 
 export default Body

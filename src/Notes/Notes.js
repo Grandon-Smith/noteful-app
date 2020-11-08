@@ -2,28 +2,30 @@ import React from 'react';
 import { render } from 'react-dom';
 import './Notes.css'
 
-function Notes() {
+function Notes(props) {
 
-        // const Notes = props.data.notes.map((key, idx) => {
-        // <div className="folder" key={idx}>
-        //     <button 
-        //         className="folder-button"
-        //         id={idx}>
-        //             {key}
-        //     </button>
-        // </div>
-    // });
+
+    {console.log(props.data.selected.noteId)}
+
+     const note = props.data.selected.noteId.map((obj, idx) => {
+        return(
+            <div className="wrapper" id={obj.folderId} key={idx}>
+                <h3 className="note-title">{obj.name}</h3>
+                <div className="note-bottom">
+                    <h5 className="note-date">{obj.modified}</h5>
+                    <button className="delete-btn" key={idx}>Delete Note</button>
+                </div>
+                
+            </div>
+        )
+    })
+
 
     return (
-        <div className="wrapper">
-            <h3 className="note-title">NOte Title</h3>
-            <div className="note-bottom">
-                <h5 className="note-date">date modified timestamp</h5>
-                <button className="delete-btn">Delete Note</button>
-            </div>
-            
+
+        <div className="note-container">
+            {note}
         </div>
-       
     )
 
 }
