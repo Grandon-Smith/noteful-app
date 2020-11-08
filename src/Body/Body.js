@@ -5,14 +5,13 @@ import Folders from '../Folders/Folders'
 import Notes from '../Notes/Notes'
 import AddNote from '../AddNote/AddNote'
 import AddFolder from '../AddFolder/AddFolder'
+import GoBack from '../GoBack/GoBack'
 
 
 function Body(props) {
 
 
 
-//  console.log(props.folderClick)
-// {console.log(props.data)}
     return (
         <div className="group">
             <nav className="folder-list">
@@ -21,12 +20,20 @@ function Body(props) {
                     folderClick={props.folderClick}
                 />
                 
-                <AddFolder/>
+                <AddFolder
+                    data={props.data}/>
+
+                <GoBack
+                    data={props.data}
+                    backClick={props.backClick}/>
             </nav>
             <section className="note-list">
                 <Notes 
-                    data={props.data}/>
-                
+                    data={props.data}
+                    noteClick={props.noteClick}/>
+                <div>
+                    {props.data.selected.noteContent}
+                </div>
                 <AddNote/>
             </section>
             

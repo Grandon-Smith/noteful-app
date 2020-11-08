@@ -5,12 +5,18 @@ import './Notes.css'
 function Notes(props) {
 
 
-    {console.log(props.data.selected.noteId)}
+    // {console.log(props.data.selected.noteId)}
 
      const note = props.data.selected.noteId.map((obj, idx) => {
         return(
             <div className="wrapper" id={obj.folderId} key={idx}>
-                <h3 className="note-title">{obj.name}</h3>
+                <button 
+                    type="button"
+                    className="note-btn"
+                    onClick={e => props.noteClick(e.target.id)}>
+                    <h3 className="note-title" id={obj.id}> {obj.name} </h3>
+                </button>
+                
                 <div className="note-bottom">
                     <h5 className="note-date">{obj.modified}</h5>
                     <button className="delete-btn" key={idx}>Delete Note</button>

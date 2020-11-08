@@ -7,6 +7,25 @@
 
 .note-title {
     margin: 5px 10px;
+    font-size: 1.5rem;
+}
+
+.note-btn {
+    background-color: transparent;
+    margin: 2% 2%;
+    border: none;
+    border-radius: 5px;
+}
+
+.note-btn:hover {
+    cursor: pointer;
+    background-color: rgb(168, 209, 209);
+}
+
+.note-btn:focus {
+    border: none;
+    outline: none;
+    background-color: rgb(146, 187, 187);
 }
 
 .note-bottom {
@@ -23,4 +42,8 @@
     padding: 5px 10px;
     background-color: transparent;
     border-radius: 5px;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
 }
