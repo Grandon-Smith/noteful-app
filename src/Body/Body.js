@@ -1,5 +1,6 @@
 // import { render } from '@testing-library/react'
 import React from 'react'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import './Body.css'
 import Folders from '../Folders/Folders'
 import Notes from '../Notes/Notes'
@@ -13,8 +14,10 @@ function Body(props) {
     
 
     return (
+        
         <div className="group">
             <nav className="folder-list">
+                
                 <Folders 
                     data={props.data}
                     folderClick={props.folderClick}
@@ -22,7 +25,9 @@ function Body(props) {
                 
                 <AddFolder
                     data={props.data}/>
-
+                
+                <Route
+                    path="/folders" component={Folders}/>
                 <GoBack
                     data={props.data}
                     backClick={props.backClick}/>
@@ -38,6 +43,7 @@ function Body(props) {
             </section>
             
         </div>
+     
     )
 
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './GoBack.css'
+import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
+
 
 function GoBack(props) {
     // console.log(props.backClick)
