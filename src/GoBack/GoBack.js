@@ -3,12 +3,12 @@ import { render } from 'react-dom';
 import './GoBack.css'
 
 function GoBack(props) {
-    {console.log(props.backClick())}
+    // console.log(props.backClick)
     if(props.data.selected.passGoBack !== null) {
         return (
             <div>
                 <button 
-                    onClick={e => props.GoBack(e)}
+                    onClick={e => props.backClick()}
                     className="go-back-btn">
                         Go Back
                 </button>

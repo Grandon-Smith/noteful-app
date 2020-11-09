@@ -10,7 +10,7 @@ import GoBack from '../GoBack/GoBack'
 
 function Body(props) {
 
-
+    
 
     return (
         <div className="group">

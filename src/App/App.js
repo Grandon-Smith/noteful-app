@@ -1,10 +1,10 @@
 // import logo, { ReactComponent } from '../logo.svg';
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import './App.css';
-import Header from '../Header/Header'
-import Body from '../Body/Body'
-import data from '../STORE'
-import { Route } from 'react-router-dom'
+import Header from '../Header/Header';
+import Body from '../Body/Body';
+import data from '../STORE';
+import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 
 
@@ -25,7 +25,7 @@ class App extends Component{
 
     
     handleFolderClick = (id) => {
-      // const folder = []
+
       // folder.push(this.state.data.folders.find(folder => folder.id === id))
       const shownNotes = this.state.data.notes.filter(note => note.folderId === id)
       // console.log(shownNotes)
@@ -35,8 +35,11 @@ class App extends Component{
           noteId: shownNotes,
           noteContent: null,
           passGoBack: null,
+          folder: id,
         }
       })
+
+      console.log(this.state.selected)
   }
 
 
@@ -67,8 +70,19 @@ class App extends Component{
     })
   }
 
-  handleGoBackClick = (e) => {
-    console.log('i')
+  handleGoBackClick = () => {
+    const shownNotes = this.state.data.notes.filter(note => note.folderId === this.state.selected.folder)
+
+    this.setState({
+      selected: {
+        folderId: this.state.data.folders,
+        noteId: shownNotes,
+        noteContent: null,
+        passGoBack: null,
+        }
+    })
+    console.log(this.state.selected)
+
   }
 
     render() {
@@ -82,7 +96,7 @@ class App extends Component{
                     data={this.state}
                     folderClick={id => this.handleFolderClick(id)}
                     noteClick={id => this.handleNoteClick(id)}
-                    backClick={e => this.handleGoBackClick(e)}
+                    backClick={() => this.handleGoBackClick()}
                 />
             </div>
         );
