@@ -14,6 +14,6 @@ function Header(props) {
                 </h1>
             </header>
         )
-}
+} 
 
 export default Header

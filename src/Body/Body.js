@@ -27,7 +27,10 @@ function Body(props) {
                     data={props.data}/>
                 
                 <Route
-                    path="/folders" component={Folders}/>
+                    path="/folders" render={(props) => <Folders {...props}/>}
+                />
+            
+
                 <GoBack
                     data={props.data}
                     backClick={props.backClick}/>
