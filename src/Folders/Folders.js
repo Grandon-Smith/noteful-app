@@ -21,9 +21,9 @@ function Folders(props) {
                             id={obj.id}
                             onClick={e => props.folderClick(e.target.id)}
                         >
-                            {/* <Link to={`/folders/${obj.id}`}> */}
+                            <Link to={`/folders/${obj.id}`}>
                                 {obj.name}
-                            {/* </Link> */} 
+                            </Link> 
                         </button>
                     </div>
                
