@@ -92,20 +92,45 @@ class App extends Component{
 //   <Route
 //   path={`/folders/`} 
 //   render={(props) => 
-//       <Folders 
+//       <Folders
 //           {...props}
 //       />}
 // />
 
+renderApp() {
+  <div>
+      <Header  
+        headerClick={this.handleHeaderClick} 
+        title={"Noteful"}/>
+      <Body
+        data={this.state}
+        folderClick={id => this.handleFolderClick(id)}
+        noteClick={id => this.handleNoteClick(id)}
+        backClick={() => this.handleGoBackClick()}/>
+  </div>
+}
+  
+ 
+
+
+
+
+
+
     render() {
+
       console.log(this.state.data.folders)
+
+      this.renderApp()
+
         return (
             <div className="App">
               
-              
-                  <Header
+              <Header
                       headerClick={this.handleHeaderClick} 
                       title={"Noteful"}/>
+      
+
                   <Body 
                       data={this.state}
                       folderClick={id => this.handleFolderClick(id)}
