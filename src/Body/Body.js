@@ -22,14 +22,6 @@ function Body(props) {
                     data={props.data}
                     folderClick={props.folderClick}
                 />
-                <Route 
-                    path={`/folders`}
-                >
-                    <Folders 
-                     data={props.data}
-                     folderClick={props.folderClick}/>
-                </Route>
-
                
                 <AddFolder
                     data={props.data}/>

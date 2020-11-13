@@ -56,6 +56,9 @@ class App extends Component{
   }
 
 
+
+
+
   handleNoteClick = (id) => {
     const shownNotes = this.state.data.notes.filter(note => note.id === id)
     const shownContent = shownNotes[0].content
@@ -98,8 +101,8 @@ class App extends Component{
       console.log(this.state.data.folders)
         return (
             <div className="App">
-              <Route
-                path='/' exact>
+              
+              
                   <Header
                       headerClick={this.handleHeaderClick} 
                       title={"Noteful"}/>
@@ -109,8 +112,6 @@ class App extends Component{
                       noteClick={id => this.handleNoteClick(id)}
                       backClick={() => this.handleGoBackClick()}
                   />
-              </Route>
-                
                 
             </div>
         );
