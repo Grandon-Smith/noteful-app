@@ -19,6 +19,7 @@ class App extends Component{
               noteId: data.notes,
               noteContent: null,
               passGoBack: null,
+              folder: 0,
             }
         }
     }
@@ -85,19 +86,32 @@ class App extends Component{
 
   }
 
+//   <Route
+//   path={`/folders/`} 
+//   render={(props) => 
+//       <Folders 
+//           {...props}
+//       />}
+// />
+
     render() {
-      console.log(this.state.selected)
+      console.log(this.state.data.folders)
         return (
             <div className="App">
-                <Header
-                    headerClick={this.handleHeaderClick} 
-                    title={"Noteful"}/>
-                <Body 
-                    data={this.state}
-                    folderClick={id => this.handleFolderClick(id)}
-                    noteClick={id => this.handleNoteClick(id)}
-                    backClick={() => this.handleGoBackClick()}
-                />
+              <Route
+                path='/' exact>
+                  <Header
+                      headerClick={this.handleHeaderClick} 
+                      title={"Noteful"}/>
+                  <Body 
+                      data={this.state}
+                      folderClick={id => this.handleFolderClick(id)}
+                      noteClick={id => this.handleNoteClick(id)}
+                      backClick={() => this.handleGoBackClick()}
+                  />
+              </Route>
+                
+                
             </div>
         );
     }

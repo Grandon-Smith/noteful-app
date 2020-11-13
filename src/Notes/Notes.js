@@ -18,9 +18,9 @@ function Notes(props) {
                     onClick={e => props.noteClick(e.target.id)}
                     >
                     <h3 className="note-title" id={obj.id}>
-                        <Link to={`/note/${obj.id}`}>
+                        {/* <Link to={`/note/${obj.id}`}> */}
                             {obj.name} 
-                        </Link>
+                        {/* </Link> */}
                     </h3>
                 </button>
                 

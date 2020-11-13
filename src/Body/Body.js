@@ -11,7 +11,7 @@ import GoBack from '../GoBack/GoBack'
 
 function Body(props) {
 
-    
+    console.log(props)
 
     return (
         
@@ -22,14 +22,17 @@ function Body(props) {
                     data={props.data}
                     folderClick={props.folderClick}
                 />
-                
+                <Route 
+                    path={`/folders`}
+                >
+                    <Folders 
+                     data={props.data}
+                     folderClick={props.folderClick}/>
+                </Route>
+
+               
                 <AddFolder
                     data={props.data}/>
-                
-                <Route
-                    path="/folders" render={(props) => <Folders {...props}/>}
-                />
-            
 
                 <GoBack
                     data={props.data}

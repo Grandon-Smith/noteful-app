@@ -6,7 +6,7 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 
 function Folders(props) {
-    {console.log(props.data.selected.folderId)}
+    // {console.log(props.data.selected.folderId)}
     console.log(props)
     if(props.data.selected.passGoBack !== null) {
         return ""
@@ -21,15 +21,15 @@ function Folders(props) {
                             id={obj.id}
                             onClick={e => props.folderClick(e.target.id)}
                         >
-                            <Link to={`/folders/${obj.id}`}>
+                            <Link to={`/folders`}>
                                 {obj.name}
-                            </Link> 
+                            </Link>
                         </button>
                     </div>
                
             )
         });
-    
+    //${obj.id}
 
         return (
             
