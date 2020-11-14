@@ -7,7 +7,7 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 function Notes(props) {
 
 
-    // {console.log(props.data.selected.noteId)}
+    {console.log(props.data.selected.noteId)}
 
      const note = props.data.selected.noteId.map((obj, idx) => {
         return(

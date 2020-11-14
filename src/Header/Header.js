@@ -10,7 +10,6 @@ function Header(props) {
                 <h1
                     onClick={() => props.headerClick()}>
                     <Link to='/'>{props.title}</Link>
-                    
                 </h1>
             </header>
         )

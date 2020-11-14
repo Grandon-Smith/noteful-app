@@ -5,6 +5,8 @@ import Header from '../Header/Header';
 import Body from '../Body/Body';
 import data from '../STORE';
 import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
+import Folders from '../Folders/Folders';
+import Notes from '../Notes/Notes'
 
 
 
@@ -90,26 +92,14 @@ class App extends Component{
   }
 
 //   <Route
-//   path={`/folders/`} 
+//   path={`/folders/:folderId`} 
 //   render={(props) => 
 //       <Folders
 //           {...props}
 //       />}
 // />
 
-renderApp() {
-  <div>
-      <Header  
-        headerClick={this.handleHeaderClick} 
-        title={"Noteful"}/>
-      <Body
-        data={this.state}
-        folderClick={id => this.handleFolderClick(id)}
-        noteClick={id => this.handleNoteClick(id)}
-        backClick={() => this.handleGoBackClick()}/>
-  </div>
-}
-  
+
  
 
 
@@ -121,27 +111,73 @@ renderApp() {
 
       console.log(this.state.data.folders)
 
-      this.renderApp()
-
         return (
-            <div className="App">
-              
-              <Header
-                      headerClick={this.handleHeaderClick} 
-                      title={"Noteful"}/>
-      
-
-                  <Body 
+          <div className="App">
+            <Switch>
+              <Route
+                exact path='/'
+                render={(props) => (
+                  <>
+                    <Header 
+                      {...props} 
+                      title={"Noteful"} 
+                      headerClick={this.handleHeaderClick}
+                    />
+                    <Body {...props} 
                       data={this.state}
                       folderClick={id => this.handleFolderClick(id)}
                       noteClick={id => this.handleNoteClick(id)}
                       backClick={() => this.handleGoBackClick()}
-                  />
-                
-            </div>
+                    />
+                  </>
+                )}
+              />
+              <Route 
+                path='/folders/:folderId'
+                render={(props) => (
+                  <>
+                    <Header 
+                      {...props} 
+                      title={"Noteful"} 
+                      headerClick={this.handleHeaderClick}
+                    />
+                    <Body {...props} 
+                      data={this.state}
+                      folderClick={id => this.handleFolderClick(id)}
+                      noteClick={id => this.handleNoteClick(id)}
+                      backClick={() => this.handleGoBackClick()}
+                    />
+                    {/* <Folders
+                      {...props}
+                      data={this.state}
+                      folderClick={id => this.handleFolderClick(id)}/>
+                       <Notes 
+                    data={this.state}
+                    noteClick={id => this.handleNoteClick(id)}/>
+                       */}
+                  </>
+                )}
+              />
+
+              
+            </Switch>
+          </div>
         );
     }
 }
+
+       // <div className="App">
+            //       <Header
+            //           headerClick={this.handleHeaderClick} 
+            //           title={"Noteful"}/>
+
+            //       <Body 
+            //           data={this.state}
+            //           folderClick={id => this.handleFolderClick(id)}
+            //           noteClick={id => this.handleNoteClick(id)}
+            //           backClick={() => this.handleGoBackClick()}
+            //       />
+            // </div>
 
 export default App;
  
