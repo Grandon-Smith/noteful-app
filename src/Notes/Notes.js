@@ -6,10 +6,9 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 function Notes(props) {
 
+    {console.log(props.data.data.notes)}
 
-    {console.log(props.data.selected.noteId)}
-
-     const note = props.data.selected.noteId.map((obj, idx) => {
+     const note = props.data.data.notes.map((obj, idx) => {
         return(
             <div className="wrapper" id={obj.folderId} key={idx}>
                 <button 
