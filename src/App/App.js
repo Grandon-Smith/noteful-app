@@ -23,36 +23,41 @@ class App extends Component{
         }
     }
 
+    
+    handleHeaderClick = (e) => {
+      console.log('header clicked')
+      e.preventDefault()
+      this.setState({
+        selected: {
+          folders: [],
+          notes: [],
+        }
+      })
+  }
+
     handleFolderClick = (id) => {
         let shownNotes = this.state.data.notes.filter(note => note.folderId === id)
         this.setState({
           selected: {
-            notes: shownNotes
-          }
-        })
-    }
-
-
-    handleHeaderClick = (e) => {
-        console.log('header clicked')
-        e.preventDefault()
-        this.setState({
-          selected: {
             folders: [],
-            notes: [],
+            notes: shownNotes,
           }
         })
     }
-
 
     handleNoteClick = (id) => {
-        console.log('note click', id)
+        // console.log('note click', id)
         let noteContent = this.state.data.notes.filter(note => note.id === id)
+        
+        let matchFolder = this.state.data.folders.filter(folder => folder.id === noteContent[0].folderId)
+        console.log(matchFolder)
         this.setState({
           selected: {
+            folders: matchFolder,
             notes: noteContent
           }
         })
+        console.log(this.state.selected.folders)
 
     }
 
