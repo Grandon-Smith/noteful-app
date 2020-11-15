@@ -59,6 +59,7 @@ class App extends Component{
 
     handleGoBackClick = () => {
         console.log('go back clicked')
+        
     }
 
 

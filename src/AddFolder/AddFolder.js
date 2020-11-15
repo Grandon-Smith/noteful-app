@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import './AddFolder.css'
 
 function AddFolder(props) {
-    if(props.data.selected.passGoBack !== null) {
+    if(props.data.selected.notes.length === 1) {
         return ""
     } else {
         return (

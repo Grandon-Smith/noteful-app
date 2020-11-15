@@ -5,8 +5,8 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 
 function GoBack(props) {
-    // console.log(props.backClick)
-    if(props.data.selected.passGoBack !== null) {
+console.log(props.data.selected.folders)
+    if(props.data.selected.notes.length === 1) {
         return (
             <div>
                 <button 
@@ -14,7 +14,7 @@ function GoBack(props) {
                     className="go-back-btn">
                         Go Back
                 </button>
-                <h3>Folder: {props.data.selected.passGoBack}</h3>
+                <h4>Folder: {props.data.selected.folders[0].name}</h4>
             </div>
         )
     } else {
