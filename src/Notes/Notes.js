@@ -5,17 +5,14 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 
 function Notes(props) {
-    console.log(props.data.selected.notes)
-        
-        // if (props.data.selected.notes.length === 0) {
-        //     let noteData = props.data.data.notes;
-        //     return noteData
-        // } else if (props.data.selected.notes.length > 0){
-        //     let noteData = props.data.selected.notes;
-        //     return noteData
-        // }
+    let noteData = [];
+    if (props.data.selected.notes.length === 0) {
+        noteData = props.data.data.notes;
+    } else if (props.data.selected.notes.length > 0){
+        noteData = props.data.selected.notes;
+    }
 
-     const note = props.data.data.notes.map((obj, idx) => {
+    const note = noteData.map((obj, idx) => {
         return(
             <div className="wrapper" id={obj.folderId} key={idx}>
                 <button 
@@ -33,6 +30,11 @@ function Notes(props) {
                 <div className="note-bottom">
                     <h5 className="note-date">{obj.modified}</h5>
                     <button className="delete-btn" key={idx}>Delete Note</button>
+                </div>
+                <div className="note-content">
+                    {props.data.selected.notes.length !== 1 
+                    ? "" 
+                    : props.data.selected.notes[0].content}
                 </div>
                 
             </div>

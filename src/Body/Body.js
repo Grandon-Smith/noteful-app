@@ -34,9 +34,7 @@ function Body(props) {
                 <Notes 
                     data={props.data}
                     noteClick={props.noteClick}/>
-                <div>
-                    {props.data.selected.noteContent}
-                </div>
+                
                 <AddNote/>
             </section>
             

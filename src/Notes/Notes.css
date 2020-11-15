@@ -47,3 +47,7 @@
 .delete-btn:hover {
     cursor: pointer;
 }
+
+.note-content {
+    padding: 10px;
+}
