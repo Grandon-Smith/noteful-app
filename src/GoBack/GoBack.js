@@ -5,7 +5,6 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 
 function GoBack(props) {
-console.log(props.data.selected.folders)
     if(props.data.selected.notes.length === 1) {
         return (
             <div>

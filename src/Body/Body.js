@@ -11,17 +11,27 @@ import GoBack from '../GoBack/GoBack'
 
 function Body(props) {
 
-    console.log(props)
-
     return (
         
         <div className="group">
             <nav className="folder-list">
+
                 
                 <Folders 
                     data={props.data}
                     folderClick={props.folderClick}
                 />
+
+                {/* <Route
+                    path='/folders/:folderid'
+                    render={(props) => (
+                        <Folders
+                            {...props}
+                            data={props.data}
+                            folderClick={props.folderClick}
+                        />
+                    )}
+                /> */}
                
                 <AddFolder
                     data={props.data}/>

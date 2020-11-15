@@ -9,7 +9,7 @@ function Header(props) {
             <header className="header">
                 <h1
                     onClick={(e) => props.headerClick(e)}>
-                    <a href ={props.title}>{props.title}</a>
+                    <Link to='/'> {props.title} </Link>
                 </h1>
             </header>
         )
