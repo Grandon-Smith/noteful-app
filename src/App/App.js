@@ -18,12 +18,35 @@ class App extends Component{
             data: data,
             selected: {
               folders: [],
-              notes:[],
+              notes: [],
             }
         }
     }
 
+    handleFolderClick = (id) => {
 
+        console.log("folder clicked", id)
+        let shownNotes = this.state.data.notes.filter(note => note.folderId === id)
+        this.setState({
+          selected: {
+            notes: shownNotes
+          }
+        })
+    }
+
+
+    handleHeaderClick = () => {
+        console.log('header clicked')
+    }
+
+
+    handleNoteClick = (id) => {
+        console.log('note click', id)
+    }
+
+    handleGoBackClick = () => {
+        console.log('go back clicked')
+    }
 
 
     render() {
