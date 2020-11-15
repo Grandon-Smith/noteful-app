@@ -17,8 +17,8 @@ class App extends Component{
         this.state = {
             data: data,
             selected: {
-              folders: [],
-              notes: [],
+                folders: [],
+                notes: [],
             }
         }
     }
@@ -28,36 +28,32 @@ class App extends Component{
       console.log('header clicked')
       e.preventDefault()
       this.setState({
-        selected: {
-          folders: [],
-          notes: [],
-        }
+          selected: {
+              folders: [],
+              notes: [],
+          }
       })
   }
 
     handleFolderClick = (id) => {
         let shownNotes = this.state.data.notes.filter(note => note.folderId === id)
         this.setState({
-          selected: {
-            folders: [],
-            notes: shownNotes,
-          }
+            selected: {
+                folders: [],
+                notes: shownNotes,
+            }
         })
     }
 
     handleNoteClick = (id) => {
-        // console.log('note click', id)
         let noteContent = this.state.data.notes.filter(note => note.id === id)
-        
         let matchFolder = this.state.data.folders.filter(folder => folder.id === noteContent[0].folderId)
-        console.log(matchFolder)
         this.setState({
-          selected: {
-            folders: matchFolder,
-            notes: noteContent
-          }
+            selected: {
+                folders: matchFolder,
+                notes: noteContent
+            }
         })
-        console.log(this.state.selected.folders)
 
     }
 
