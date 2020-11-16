@@ -15,7 +15,7 @@ function Notes(props) {
     const note = noteData.map((obj, idx) => {
         return(
             <div className="wrapper" id={obj.folderId} key={idx}>
-                <Link to={`/note/${obj.id}`}>
+                {/* <Link to={`/note/${obj.id}`}> */}
                     <button 
                         type="button"
                         className="note-btn"
@@ -27,7 +27,7 @@ function Notes(props) {
                             {/* </Link> */}
                         </h3>
                     </button>
-                </Link>
+                {/* </Link> */}
                 <div className="note-bottom">
                     <h5 className="note-date">{obj.modified}</h5>
                     <button className="delete-btn" key={idx}>Delete Note</button>

@@ -1,57 +1,57 @@
-// import { render } from '@testing-library/react'
-import React from 'react'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import './Body.css'
-import Folders from '../Folders/Folders'
-import Notes from '../Notes/Notes'
-import AddNote from '../AddNote/AddNote'
-import AddFolder from '../AddFolder/AddFolder'
-import GoBack from '../GoBack/GoBack'
+// // import { render } from '@testing-library/react'
+// import React from 'react'
+// import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+// import './Body.css'
+// import Folders from '../Folders/Folders'
+// import Notes from '../Notes/Notes'
+// import AddNote from '../AddNote/AddNote'
+// import AddFolder from '../AddFolder/AddFolder'
+// import GoBack from '../GoBack/GoBack'
 
 
-function Body(props) {
+// function Body(props) {
 
-    return (
+//     return (
         
-        <div className="group">
-            <nav className="folder-list">
+//         <div className="group">
+//             <nav className="folder-list">
 
                 
-                <Folders 
-                    data={props.data}
-                    folderClick={props.folderClick}
-                />
+//                 <Folders 
+//                     data={props.data}
+//                     folderClick={props.folderClick}
+//                 />
 
-                {/* <Route
-                    path='/folders/:folderid'
-                    render={(props) => (
-                        <Folders
-                            {...props}
-                            data={props.data}
-                            folderClick={props.folderClick}
-                        />
-                    )}
-                /> */}
+//                 {/* <Route
+//                     path='/folders/:folderid'
+//                     render={(props) => (
+//                         <Folders
+//                             {...props}
+//                             data={props.data}
+//                             folderClick={props.folderClick}
+//                         />
+//                     )}
+//                 /> */}
                
-                <AddFolder
-                    data={props.data}/>
+//                 <AddFolder
+//                     data={props.data}/>
 
-                <GoBack
-                    data={props.data}
-                    backClick={props.backClick}/>
-            </nav>
-            <section className="note-list">
-                <Notes 
-                    data={props.data}
-                    noteClick={props.noteClick}/>
+//                 <GoBack
+//                     data={props.data}
+//                     backClick={props.backClick}/>
+//             </nav>
+//             <section className="note-list">
+//                 <Notes 
+//                     data={props.data}
+//                     noteClick={props.noteClick}/>
                 
-                <AddNote/>
-            </section>
+//                 <AddNote/>
+//             </section>
             
-        </div>
+//         </div>
      
-    )
+//     )
 
-}
+// }
 
-export default Body
+// export default Body

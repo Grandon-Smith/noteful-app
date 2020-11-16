@@ -7,8 +7,6 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 function Folders(props) {
     console.log(props)
-
-
     if(props.data.selected.notes.length === 1) {
         return ""
     } else {
