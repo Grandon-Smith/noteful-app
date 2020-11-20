@@ -7,11 +7,17 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 function Folders(props) {
     console.log(props)
-    if(props.data.selected.notes.length === 1) {
-        return ""
-    } else {
-    
-        const folder = props.data.data.folders.map((obj, idx) => {
+
+    let folder = props.data.data.folders
+
+    // if(props.data.selected.folders.length > 0) {
+    //     console.log("hi", props.data.selected.folders)
+        
+    //     folder = props.data.selected.folders
+    //     return folder
+    // }
+
+    let folderList = folder.map((obj, idx) => {
             return (
                 
                     <div className="folder" key={idx} id={obj.id}>
@@ -35,10 +41,10 @@ function Folders(props) {
         return (
             
             <div className="folder-container" >
-                {folder}
+                {folderList}
             </div>
         )
     }
-}
+
 
 export default Folders

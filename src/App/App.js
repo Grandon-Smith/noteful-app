@@ -39,12 +39,15 @@ class App extends Component{
 
     handleFolderClick = (id) => {
         let shownNotes = this.state.data.notes.filter(note => note.folderId === id)
+        let matchFolder = this.state.data.folders.filter(folder => folder.id === id)
+
         this.setState({
             selected: {
-                folders: [],
+                folders: matchFolder,
                 notes: shownNotes,
             }
         })
+        // console.log(this.state.selected)
     }
 
     handleNoteClick = (id) => {
@@ -57,172 +60,107 @@ class App extends Component{
             }
         })
     }
-    componentDidMount = () => {
-        function focusFolder(){
-            let focusFolder = document.getElementById(this.state.selected.folders[0].id)
-            focusFolder.focus()
-        }
-    }
-    
 
     handleGoBackClick = () => {
         console.log('go back clicked')
     }
 
 
-
-    // folderRoutes = () => {
-    //   const {notes, folders} = this.state.selected;
-    //     return (
-    //         <>
-    //             {['/', '/folder/:folderId'].map(path => (
-    //                 <Route
-    //                     exact
-    //                     key={path}
-    //                     path={path}
-    //                     render={routeProps => (
-    //                         <Body
-    //                             folders={folders}
-    //                             notes={notes}
-    //                             {...routeProps}
-    //                         />
-    //                     )}
-    //                 />
-    //             ))}
-    //         </>
-    //     )
-    // }
-
-
-
-
     render() {
         return (
             <div className="App">
-              
-                {/* <Body 
-                    data={this.state}
-                    folderClick={id => this.handleFolderClick(id)}
-                    noteClick={id => this.handleNoteClick(id)}
-                    backClick={() => this.handleGoBackClick()}
-                /> */}
-
-                {/* <Header
-                    headerClick={e => this.handleHeaderClick(e)} 
-                    title={"Noteful"}
-                />
-
-                
-
-
-
-                <div className="group">
-                    <nav className="folder-list">
-
-                        
-                        <Folders 
-                            data={this.state}
-                            folderClick={id => this.handleFolderClick(id)}
-                        />
-
-                        <AddFolder
-                            data={this.state}
-                            />
-
-                        <GoBack
-                            data={this.state}
-                            backClick={() => this.handleGoBackClick()}
-                        />
-                    </nav>
-                    <section className="note-list">
-                        <Notes 
-                            data={this.state}
-                            noteClick={id => this.handleNoteClick(id)}
-                            />
-                        
-                        <AddNote/>
-                    </section>
-                </div> */}
-               
-
-
-
-
-
-
 
 
                 <Switch>
-                  <Route
-                    exact path='/'
-                    render={(props) => (
-                      <>
-                        <Header 
-                          {...props} 
-                          title={"Noteful"} 
-                          headerClick={this.handleHeaderClick}
-                        />
-                        <div className="group">
-                          <nav className="folder-list">
-
-                              
-                              <Folders 
-                                  data={this.state}
-                                  folderClick={id => this.handleFolderClick(id)}
-                              />
-
-                              <AddFolder
-                                  data={this.state}
-                                  />
-
-                              <GoBack
-                                  data={this.state}
-                                  backClick={() => this.handleGoBackClick()}
-                              />
-                          </nav>
-                          <section className="note-list">
-                              <Notes 
-                                  data={this.state}
-                                  noteClick={id => this.handleNoteClick(id)}
-                              />
-                              
-                              <AddNote/>
-                          </section>
-                        </div>
-                      </>
-                    )}
-                  />
-
-                  <Route
-                    path='/folders/:folderid'
-                    render={(props) => (
+                    <Route
+                        exact path='/'
+                        render={(props) => (
                         <>
-                      
-                        <div className="group">
-                          <nav className="folder-list">
+                            <Header 
+                            {...props} 
+                            title={"Noteful"} 
+                            headerClick={this.handleHeaderClick}
+                            />
+                            <div className="group">
+                            <nav className="folder-list">
 
-                              
-                              <Folders 
-                                  data={this.state}
-                                  folderClick={id => this.handleFolderClick(id)}
-                                  {...props}
-                              />
+                                
+                                <Folders 
+                                    data={this.state}
+                                    folderClick={id => this.handleFolderClick(id)}
+                                />
 
-                          </nav>
-                          <section className="note-list">
-                              <Notes 
-                                  data={this.state}
-                                  noteClick={id => this.handleNoteClick(id)}
-                                  {...props}
-                              />
-                            
-                          </section>
-                        </div>
-                      </>
-                      )
-                    }
+                                <AddFolder
+                                    data={this.state}
+                                />
 
-                  />
+                                <GoBack
+                                    data={this.state}
+                                    backClick={() => this.handleGoBackClick()}
+                                />
+                            </nav>
+                            <section className="note-list">
+                                <Notes 
+                                    data={this.state}
+                                    noteClick={id => this.handleNoteClick(id)}
+                                />
+                                
+                                <AddNote/>
+                            </section>
+                            </div>
+                        </>
+                        )}
+                    />
+
+                    <Route
+                        exact path='/folders/:folderid'
+                        render={(props) => {
+                            // let matchFolder = this.state.data.folders.filter(folder => folder.id === props.match.params.folderid)
+                            // let shownNotes = this.state.data.notes.filter(note => note.folderId === props.match.params.folderid)
+
+                            console.log(props)
+                            return(
+                                <>
+                                
+                                    <Header 
+                                    {...props} 
+                                    title={"Noteful"} 
+                                    headerClick={this.handleHeaderClick}
+                                    />
+                                    <div className="group">
+                                    <nav className="folder-list">
+
+                                        
+                                        <Folders 
+                                            data={this.state}
+                                            folderClick={id => this.handleFolderClick(id)}
+                                            {...props}
+                                        />
+
+                                        {/* <AddFolder
+                                            data={this.state}
+                                            /> */}
+
+                                        <GoBack
+                                            data={this.state}
+                                            backClick={() => this.handleGoBackClick()}
+                                        />
+                                    </nav>
+                                    <section className="note-list">
+                                        <Notes 
+                                            {...props}
+                                            data={this.state}
+                                            noteClick={id => this.handleNoteClick(id)}
+                                            // shownNotes={shownNotes}
+                                        />
+                                        
+                                        <AddNote/>
+                                    </section>
+                                    </div>
+                                </>
+                            )
+                        }}
+                    />
                 </Switch>
 
 

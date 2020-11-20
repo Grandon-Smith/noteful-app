@@ -5,13 +5,15 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 
 
 function Notes(props) {
+
     let noteData = [];
-    if (props.data.selected.notes.length === 0) {
+    if(props.match === undefined) {
         noteData = props.data.data.notes;
-    } else if (props.data.selected.notes.length > 0){
-        noteData = props.data.selected.notes;
+    } else {
+        noteData = props.data.data.notes.filter(note => note.folderId === props.match.params.folderid);
     }
 
+    console.log(props)
     const note = noteData.map((obj, idx) => {
         return(
             <div className="wrapper" id={obj.folderId} key={idx}>
@@ -22,9 +24,7 @@ function Notes(props) {
                         onClick={e => props.noteClick(e.target.id)}
                         >
                         <h3 className="note-title" id={obj.id}>
-                            {/* <Link to={`/note/${obj.id}`}> */}
                                 {obj.name} 
-                            {/* </Link> */}
                         </h3>
                     </button>
                 {/* </Link> */}
