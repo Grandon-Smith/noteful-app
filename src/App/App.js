@@ -37,11 +37,6 @@ class App extends Component{
       })
   }
 
-    handleGoBackClick = () => {
-        console.log('go back clicked')
-    }
-
-
     render() {
         return (
             <div className="App">
