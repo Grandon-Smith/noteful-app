@@ -37,30 +37,6 @@ class App extends Component{
       })
   }
 
-    handleFolderClick = (id) => {
-        let shownNotes = this.state.data.notes.filter(note => note.folderId === id)
-        let matchFolder = this.state.data.folders.filter(folder => folder.id === id)
-
-        this.setState({
-            selected: {
-                folders: matchFolder,
-                notes: shownNotes,
-            }
-        })
-        // console.log(this.state.selected)
-    }
-
-    handleNoteClick = (id) => {
-        let noteContent = this.state.data.notes.filter(note => note.id === id)
-        let matchFolder = this.state.data.folders.filter(folder => folder.id === noteContent[0].folderId)
-        this.setState({
-            selected: {
-                folders: matchFolder,
-                notes: noteContent
-            }
-        })
-    }
-
     handleGoBackClick = () => {
         console.log('go back clicked')
     }
@@ -69,7 +45,6 @@ class App extends Component{
     render() {
         return (
             <div className="App">
-
 
                 <Switch>
                     <Route
@@ -83,28 +58,18 @@ class App extends Component{
                             />
                             <div className="group">
                             <nav className="folder-list">
-
                                 
                                 <Folders 
                                     data={this.state}
                                     folderClick={id => this.handleFolderClick(id)}
                                 />
-
-                                <AddFolder
-                                    data={this.state}
-                                />
-
-                                <GoBack
-                                    data={this.state}
-                                    backClick={() => this.handleGoBackClick()}
-                                />
+                                <AddFolder/>
                             </nav>
                             <section className="note-list">
                                 <Notes 
                                     data={this.state}
                                     noteClick={id => this.handleNoteClick(id)}
                                 />
-                                
                                 <AddNote/>
                             </section>
                             </div>
@@ -115,35 +80,50 @@ class App extends Component{
                     <Route
                         exact path='/folders/:folderid'
                         render={(props) => {
-                            // let matchFolder = this.state.data.folders.filter(folder => folder.id === props.match.params.folderid)
-                            // let shownNotes = this.state.data.notes.filter(note => note.folderId === props.match.params.folderid)
-
-                            console.log(props)
                             return(
                                 <>
-                                
                                     <Header 
-                                    {...props} 
                                     title={"Noteful"} 
                                     headerClick={this.handleHeaderClick}
                                     />
                                     <div className="group">
                                     <nav className="folder-list">
-
-                                        
                                         <Folders 
                                             data={this.state}
                                             folderClick={id => this.handleFolderClick(id)}
-                                            {...props}
+                                            // {...props}
                                         />
-
-                                        {/* <AddFolder
+                                        <AddFolder/>
+                                    </nav>
+                                    <section className="note-list">
+                                        <Notes 
+                                            {...props}
                                             data={this.state}
-                                            /> */}
-
+                                            noteClick={id => this.handleNoteClick(id)}
+                                        />
+                                        
+                                        <AddNote/>
+                                    </section>
+                                    </div>
+                                </>
+                            )
+                        }}
+                    />
+                    <Route
+                        exact path='/notes/:noteid'
+                        render={(props) => {
+                            return(
+                                <>
+                                    <Header 
+                                    title={"Noteful"} 
+                                    headerClick={this.handleHeaderClick}
+                                    />
+                                    <div className="group">
+                                    <nav className="folder-list">
                                         <GoBack
                                             data={this.state}
                                             backClick={() => this.handleGoBackClick()}
+                                            {...props}
                                         />
                                     </nav>
                                     <section className="note-list">
@@ -151,10 +131,7 @@ class App extends Component{
                                             {...props}
                                             data={this.state}
                                             noteClick={id => this.handleNoteClick(id)}
-                                            // shownNotes={shownNotes}
                                         />
-                                        
-                                        <AddNote/>
                                     </section>
                                     </div>
                                 </>

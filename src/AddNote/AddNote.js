@@ -4,7 +4,10 @@ import './AddNote.css'
 
 function AddNote() {
     return (
-        <button className="add-note-btn">Add Note</button>
+        <button 
+            className="add-note-btn">
+                Add Note
+        </button>
         
     )
 
