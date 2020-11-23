@@ -10,8 +10,7 @@ import Notes from '../Notes/Notes'
 import AddNote from '../AddNote/AddNote'
 import AddFolder from '../AddFolder/AddFolder'
 import GoBack from '../GoBack/GoBack'
-
-
+import NotefulContext from '../NotefulContext'
 
 
 class App extends Component{
@@ -26,44 +25,30 @@ class App extends Component{
         }
     }
 
-    
-    handleHeaderClick = (e) => {
-      e.preventDefault()
-      this.setState({
-          selected: {
-              folders: [],
-              notes: [],
-          }
-      })
-  }
-
     render() {
+        const value = {
+            data: this.state,
+        }
         return (
+            <NotefulContext.Provider value={value}>
             <div className="App">
-
                 <Switch>
                     <Route
                         exact path='/'
                         render={(props) => (
                         <>
-                            <Header 
-                            {...props} 
-                            title={"Noteful"} 
-                            headerClick={this.handleHeaderClick}
-                            />
+                            <Header/>
                             <div className="group">
                             <nav className="folder-list">
                                 
                                 <Folders 
                                     data={this.state}
-                                    folderClick={id => this.handleFolderClick(id)}
                                 />
                                 <AddFolder/>
                             </nav>
                             <section className="note-list">
                                 <Notes 
                                     data={this.state}
-                                    noteClick={id => this.handleNoteClick(id)}
                                 />
                                 <AddNote/>
                             </section>
@@ -77,16 +62,11 @@ class App extends Component{
                         render={(props) => {
                             return(
                                 <>
-                                    <Header 
-                                    title={"Noteful"} 
-                                    headerClick={this.handleHeaderClick}
-                                    />
+                                    <Header/>
                                     <div className="group">
                                     <nav className="folder-list">
                                         <Folders 
                                             data={this.state}
-                                            folderClick={id => this.handleFolderClick(id)}
-                                            // {...props}
                                         />
                                         <AddFolder/>
                                     </nav>
@@ -94,7 +74,6 @@ class App extends Component{
                                         <Notes 
                                             {...props}
                                             data={this.state}
-                                            noteClick={id => this.handleNoteClick(id)}
                                         />
                                         
                                         <AddNote/>
@@ -109,15 +88,11 @@ class App extends Component{
                         render={(props) => {
                             return(
                                 <>
-                                    <Header 
-                                    title={"Noteful"} 
-                                    headerClick={this.handleHeaderClick}
-                                    />
+                                    <Header/>
                                     <div className="group">
                                     <nav className="folder-list">
                                         <GoBack
                                             data={this.state}
-                                            backClick={() => this.handleGoBackClick()}
                                             {...props}
                                         />
                                     </nav>
@@ -125,7 +100,6 @@ class App extends Component{
                                         <Notes 
                                             {...props}
                                             data={this.state}
-                                            noteClick={id => this.handleNoteClick(id)}
                                         />
                                     </section>
                                     </div>
@@ -134,9 +108,8 @@ class App extends Component{
                         }}
                     />
                 </Switch>
-
-
             </div>
+            </NotefulContext.Provider>
         );
     }
 }

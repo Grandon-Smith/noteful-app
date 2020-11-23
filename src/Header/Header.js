@@ -4,12 +4,11 @@ import './Header.css'
 import {Route, Link} from 'react-router-dom'
 
 
-function Header(props) {
+function Header() {
         return (
             <header className="header">
-                <h1
-                    onClick={(e) => props.headerClick(e)}>
-                    <Link to='/'> {props.title} </Link>
+                <h1>
+                    <Link to='/'> Noteful </Link>
                 </h1>
             </header>
         )

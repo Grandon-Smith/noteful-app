@@ -8,11 +8,8 @@ function GoBack(props) {
     console.log(props)
     let folder = {};
     if(props.match.path === "/notes/:noteid" ) {
-        console.log("hfdskfsdjfl")
         let singleNote = props.data.data.notes.filter(note => props.match.params.noteid === note.id)
         folder = props.data.data.folders.filter(folder => folder.id === singleNote[0].folderId);
-        console.log(folder)
-
     } 
         return (
             <div>
