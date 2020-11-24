@@ -5,22 +5,23 @@ import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext'
 
 
-// class Notes extends React.Component {
-    function Notes(props) {
-    // static contextType = NotefulContext;
+class Notes extends React.Component {
 
-    // render() {
-        
+    static contextType = NotefulContext;
+
+
+    render() {
+
         let notes = [];
         
-        if(props.match === undefined) {
-            notes = [...props.data.data.notes];
+        if(this.props.match === undefined) {
+            notes = [...this.context.data.selected.notes];
         } 
-        else if (props.match.path === "/notes/:noteid") {
-            notes = props.data.data.notes.filter(item => item.id === props.match.params.noteid)
+        else if (this.props.match.path === "/notes/:noteid") {
+            notes = this.context.data.selected.notes.filter(item => item.id === this.props.match.params.noteid)
         } 
         else {
-            notes = props.data.data.notes.filter(note => note.folderId === props.match.params.folderid);
+            notes = this.context.data.selected.notes.filter(note => note.folderId === this.props.match.params.folderid);
         }
         const noteList = notes.map((obj, idx) => {
             return(
@@ -56,7 +57,7 @@ import NotefulContext from '../NotefulContext'
                 {noteList}
             </div>
         )
-    // }
+    }
 
 }
 

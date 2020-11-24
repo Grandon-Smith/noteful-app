@@ -2,8 +2,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import Header from '../Header/Header';
-import Body from '../Body/Body';
-import data from '../STORE';
 import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
 import Folders from '../Folders/Folders'
 import Notes from '../Notes/Notes'
@@ -17,39 +15,67 @@ class App extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            data: data,
+            // data: data,
             selected: {
                 folders: [],
                 notes: [],
-            }
+            },
+            deleteNote: () => {},
+            addFolder: () => {},
         }
     }
+
+    componentDidMount() {
+        Promise.all([
+            fetch(`http://localhost:9090/notes`),
+            fetch(`http://localhost:9090/folders`)
+        ])
+            .then(([notesRes, foldersRes]) => {
+                if (!notesRes.ok)
+                    return notesRes.json().then(e => Promise.reject(e));
+                if (!foldersRes.ok)
+                    return foldersRes.json().then(e => Promise.reject(e));
+
+                return Promise.all([notesRes.json(), foldersRes.json()]);
+            })
+            .then(([notes, folders]) => {
+                this.setState({
+                    selected: {notes, folders}
+                })
+            })
+            .catch(error => {
+                console.error({error});
+            });
+    }
+
+    deleteNote = noteId => {
+        this.setState({
+            data: this.state.data.notes.filter(note => note.id !== noteId)
+        });
+    };
 
     render() {
         const value = {
             data: this.state,
         }
+        console.log(this.state)
         return (
             <NotefulContext.Provider value={value}>
             <div className="App">
                 <Switch>
                     <Route
                         exact path='/'
-                        render={(props) => (
+                        render={() => (
                         <>
                             <Header/>
                             <div className="group">
                             <nav className="folder-list">
                                 
-                                <Folders 
-                                    data={this.state}
-                                />
+                                <Folders />
                                 <AddFolder/>
                             </nav>
                             <section className="note-list">
-                                <Notes 
-                                    data={this.state}
-                                />
+                                <Notes/>
                                 <AddNote/>
                             </section>
                             </div>
@@ -65,15 +91,12 @@ class App extends Component{
                                     <Header/>
                                     <div className="group">
                                     <nav className="folder-list">
-                                        <Folders 
-                                            data={this.state}
-                                        />
+                                        <Folders />
                                         <AddFolder/>
                                     </nav>
                                     <section className="note-list">
                                         <Notes 
                                             {...props}
-                                            data={this.state}
                                         />
                                         
                                         <AddNote/>
@@ -92,14 +115,12 @@ class App extends Component{
                                     <div className="group">
                                     <nav className="folder-list">
                                         <GoBack
-                                            data={this.state}
                                             {...props}
                                         />
                                     </nav>
                                     <section className="note-list">
                                         <Notes 
                                             {...props}
-                                            data={this.state}
                                         />
                                     </section>
                                     </div>

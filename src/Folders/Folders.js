@@ -11,8 +11,7 @@ class Folders extends React.Component {
     static contextType = NotefulContext;
 
     render() {
-        console.log(NotefulContext.Consumer)
-        let folder = this.context.data.data.folders
+        let folder = this.context.data.selected.folders
 
         let folderList = folder.map((obj, idx) => {
                 return (
@@ -29,7 +28,6 @@ class Folders extends React.Component {
                     </div>
                 )
             });
-
         return (
             <div className="folder-container" >
                 {folderList}
