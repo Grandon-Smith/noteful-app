@@ -10,11 +10,36 @@ class Notes extends React.Component {
     static contextType = NotefulContext;
 
 
-    render() {
+    handleDelete = e => {
+        e.preventDefault()
+        let id = (e.target.id)
+        fetch(`http://localhost:9090/notes/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+            .then(response => {
+                if(!response.ok) 
+                    return response.json().then(e => Promise.reject(e))
+                return response.json()
+            .then(() => {
+                this.context.deleteNote(id)
+                console.log(this.props)
+            })
+            .then(() => {
+                this.props.history.push('/')
+            })
+            .catch(error => {
+                console.error({ error })
+            })
+        })
+    }
 
+    render() {
         let notes = [];
         
-        if(this.props.match === undefined) {
+        if(this.props.match.path === '/') {
             notes = [...this.context.data.selected.notes];
         } 
         else if (this.props.match.path === "/notes/:noteid") {
@@ -39,7 +64,13 @@ class Notes extends React.Component {
 
                     <div className="note-bottom">
                         <h5 className="note-date">{obj.modified}</h5>
-                        <button className="delete-btn" key={idx}>Delete Note</button>
+                        <button type="button"
+                            className="delete-btn"
+                            key={obj.id}
+                            id={obj.id}
+                            onClick = {e => this.handleDelete(e)}>
+                                Delete Note
+                        </button>
                     </div>
                     <div className="note-content">
                         { notes.length !== 1 

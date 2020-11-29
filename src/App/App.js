@@ -9,6 +9,7 @@ import AddNote from '../AddNote/AddNote'
 import AddFolder from '../AddFolder/AddFolder'
 import GoBack from '../GoBack/GoBack'
 import NotefulContext from '../NotefulContext'
+import addFolderForm from '../AddFolderForm/AddFolderForm'
 
 
 class App extends Component{
@@ -20,8 +21,8 @@ class App extends Component{
                 folders: [],
                 notes: [],
             },
-            deleteNote: () => {},
-            addFolder: () => {},
+            // deleteNote: () => {},
+            // addFolder: () => {},
         }
     }
 
@@ -48,39 +49,48 @@ class App extends Component{
             });
     }
 
-    deleteNote = noteId => {
+    deleteNote = id => {
+        let notes = this.state.selected.notes.filter(note => note.id !== id)
         this.setState({
-            data: this.state.data.notes.filter(note => note.id !== noteId)
+            selected: {
+                folders: [...this.state.selected.folders],
+                notes: notes,
+            }
         });
     };
 
     render() {
         const value = {
             data: this.state,
+            deleteNote: this.deleteNote,
+            // addFolder: this.addFolder
         }
-        console.log(this.state)
         return (
             <NotefulContext.Provider value={value}>
             <div className="App">
                 <Switch>
                     <Route
                         exact path='/'
-                        render={() => (
-                        <>
-                            <Header/>
-                            <div className="group">
-                            <nav className="folder-list">
-                                
-                                <Folders />
-                                <AddFolder/>
-                            </nav>
-                            <section className="note-list">
-                                <Notes/>
-                                <AddNote/>
-                            </section>
-                            </div>
-                        </>
-                        )}
+                        render={(props) => {
+                            return (
+                                <>
+                                    <Header/>
+                                    <div className="group">
+                                    <nav className="folder-list">
+                                        
+                                        <Folders />
+                                        <AddFolder/>
+                                    </nav>
+                                    <section className="note-list">
+                                        <Notes
+                                            {...props}
+                                        />
+                                        <AddNote/>
+                                    </section>
+                                    </div>
+                                </>
+                            )
+                        }}
                     />
 
                     <Route
@@ -98,7 +108,6 @@ class App extends Component{
                                         <Notes 
                                             {...props}
                                         />
-                                        
                                         <AddNote/>
                                     </section>
                                     </div>
@@ -128,6 +137,11 @@ class App extends Component{
                             )
                         }}
                     />
+                    <Route
+                        path='/addFolderForm'
+                        component={addFolderForm}
+                    />
+
                 </Switch>
             </div>
             </NotefulContext.Provider>

@@ -1,11 +1,20 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { Link } from 'react-router-dom';
 import './AddFolder.css'
+import NotefulContext from '../NotefulContext'
+
 
 function AddFolder(props) {
         return (
-            <button className="add-folder-btn">Add Folder</button>
-            
+            // <NotefulContext.Consumer>
+            <Link to='/addFolderForm'>
+                <button 
+                    className="add-folder-btn"
+                >
+                        Add Folder
+                </button>
+            </Link>
+            // </NotefulContext.Consumer>
         )
 }
 

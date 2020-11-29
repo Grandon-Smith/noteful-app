@@ -8,8 +8,6 @@ class GoBack extends React.Component {
     static contextType = NotefulContext;
 
     render() {
-    console.log(this.context.data.selected)
-    console.log(this.props)
         let folder = {};
         if(this.props.match.path === "/notes/:noteid" ) {
             let singleNote = this.context.data.selected.notes.filter(note =>

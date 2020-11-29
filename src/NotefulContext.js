@@ -2,7 +2,7 @@ import React from 'react';
 const NotefulContext = React.createContext(
 //     {
 //     state: {
-        // data: data,
+//         data: data,
 //         selected: {
 //             folders: [],
 //             notes: [],

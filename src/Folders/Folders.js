@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './Folders.css'
-import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext'
 
 
@@ -11,6 +11,7 @@ class Folders extends React.Component {
     static contextType = NotefulContext;
 
     render() {
+        console.log(this.context.data.selected)
         let folder = this.context.data.selected.folders
 
         let folderList = folder.map((obj, idx) => {
