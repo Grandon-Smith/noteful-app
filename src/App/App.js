@@ -9,7 +9,8 @@ import AddNote from '../AddNote/AddNote'
 import AddFolder from '../AddFolder/AddFolder'
 import GoBack from '../GoBack/GoBack'
 import NotefulContext from '../NotefulContext'
-import addFolderForm from '../AddFolderForm/AddFolderForm'
+import AddFolderForm from '../AddFolderForm/AddFolderForm'
+import AddNoteForm from '../AddNoteForm/AddNoteForm'
 
 
 class App extends Component{
@@ -59,11 +60,25 @@ class App extends Component{
         });
     };
 
+    addFolder = (id, name) => {
+        console.log('ADD FOLDER RAN')
+        let newFolder = {
+            id: id,
+            name: name,
+        };
+        this.setState({
+            selected: {
+                folders:[...this.state.selected.folders, newFolder],
+                notes: [...this.state.selected.notes]
+            }
+        })
+    }
+
     render() {
         const value = {
             data: this.state,
             deleteNote: this.deleteNote,
-            // addFolder: this.addFolder
+            addFolder: this.addFolder
         }
         return (
             <NotefulContext.Provider value={value}>
@@ -139,9 +154,12 @@ class App extends Component{
                     />
                     <Route
                         path='/addFolderForm'
-                        component={addFolderForm}
+                        component={AddFolderForm}
                     />
-
+                    <Route
+                        path='/addNoteForm'
+                        component={AddNoteForm}
+                    />
                 </Switch>
             </div>
             </NotefulContext.Provider>

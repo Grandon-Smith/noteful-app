@@ -11,7 +11,6 @@ class Folders extends React.Component {
     static contextType = NotefulContext;
 
     render() {
-        console.log(this.context.data.selected)
         let folder = this.context.data.selected.folders
 
         let folderList = folder.map((obj, idx) => {

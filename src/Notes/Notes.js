@@ -25,7 +25,6 @@ class Notes extends React.Component {
                 return response.json()
             .then(() => {
                 this.context.deleteNote(id)
-                console.log(this.props)
             })
             .then(() => {
                 this.props.history.push('/')

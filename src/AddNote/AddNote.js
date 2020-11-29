@@ -1,14 +1,15 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { Link } from 'react-router-dom';
 import './AddNote.css'
 
 function AddNote() {
     return (
-        <button 
-            className="add-note-btn">
-                Add Note
-        </button>
-        
+        <Link to="/addNoteForm">
+            <button 
+                className="add-note-btn">
+                    Add Note
+            </button>
+        </Link>
     )
 
 }
