@@ -2,15 +2,15 @@
 import React, {Component} from 'react';
 import './App.css';
 import Header from '../Header/Header';
-import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Folders from '../Folders/Folders';
 import Notes from '../Notes/Notes';
-import AddNote from '../AddNote/AddNote';
-import AddFolder from '../AddFolder/AddFolder';
+import AddNote from '../AddNoteButton/AddNoteButton';
+import AddFolder from '../AddFolderButton/AddFolderButton';
 import GoBack from '../GoBack/GoBack';
 import NotefulContext from '../NotefulContext';
-import AddFolderForm from '../AddFolderForm/AddFolderForm';
-import AddNoteForm from '../AddNoteForm/AddNoteForm';
+import AddFolderForm from '../AddFolder/AddFolder';
+import AddNoteForm from '../AddNote/AddNote';
 import ErrorBoundary from '../ErrorBoundary'
 import PropTypes from 'prop-types';
 
@@ -195,7 +195,7 @@ class App extends Component{
 }
 
 App.propTypes = {
-    value: PropTypes.object
+    value: PropTypes.object.isRequired
 }
 
 export default App;

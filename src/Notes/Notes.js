@@ -1,7 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
 import './Notes.css'
-import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext'
 
 
