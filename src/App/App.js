@@ -3,14 +3,17 @@ import React, {Component} from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import { BrowserRoute, Switch, Route, Link } from 'react-router-dom';
-import Folders from '../Folders/Folders'
-import Notes from '../Notes/Notes'
-import AddNote from '../AddNote/AddNote'
-import AddFolder from '../AddFolder/AddFolder'
-import GoBack from '../GoBack/GoBack'
-import NotefulContext from '../NotefulContext'
-import AddFolderForm from '../AddFolderForm/AddFolderForm'
-import AddNoteForm from '../AddNoteForm/AddNoteForm'
+import Folders from '../Folders/Folders';
+import Notes from '../Notes/Notes';
+import AddNote from '../AddNote/AddNote';
+import AddFolder from '../AddFolder/AddFolder';
+import GoBack from '../GoBack/GoBack';
+import NotefulContext from '../NotefulContext';
+import AddFolderForm from '../AddFolderForm/AddFolderForm';
+import AddNoteForm from '../AddNoteForm/AddNoteForm';
+import ErrorBoundary from '../ErrorBoundary'
+import PropTypes from 'prop-types';
+
 
 
 class App extends Component{
@@ -95,7 +98,6 @@ class App extends Component{
             addFolder: this.addFolder,
             addNote: this.addNote,
         }
-        console.log(this.state.selected)
         return (
             <NotefulContext.Provider value={value}>
             <div className="App">
@@ -108,14 +110,17 @@ class App extends Component{
                                     <Header/>
                                     <div className="group">
                                     <nav className="folder-list">
-                                        
-                                        <Folders />
+                                        <ErrorBoundary>
+                                            <Folders />
+                                        </ErrorBoundary>
                                         <AddFolder/>
                                     </nav>
                                     <section className="note-list">
-                                        <Notes
-                                            {...props}
-                                        />
+                                        <ErrorBoundary>
+                                            <Notes
+                                                {...props}
+                                            />
+                                        </ErrorBoundary>
                                         <AddNote/>
                                     </section>
                                     </div>
@@ -132,13 +137,17 @@ class App extends Component{
                                     <Header/>
                                     <div className="group">
                                     <nav className="folder-list">
-                                        <Folders />
+                                        <ErrorBoundary>
+                                            <Folders />
+                                        </ErrorBoundary>
                                         <AddFolder/>
                                     </nav>
                                     <section className="note-list">
-                                        <Notes 
-                                            {...props}
-                                        />
+                                        <ErrorBoundary>
+                                            <Notes
+                                                {...props}
+                                            />
+                                        </ErrorBoundary>
                                         <AddNote/>
                                     </section>
                                     </div>
@@ -159,9 +168,11 @@ class App extends Component{
                                         />
                                     </nav>
                                     <section className="note-list">
-                                        <Notes 
-                                            {...props}
-                                        />
+                                        <ErrorBoundary>
+                                            <Notes
+                                                {...props}
+                                            />
+                                        </ErrorBoundary>
                                     </section>
                                     </div>
                                 </>
@@ -183,6 +194,9 @@ class App extends Component{
     }
 }
 
+App.propTypes = {
+    value: PropTypes.object
+}
 
 export default App;
  

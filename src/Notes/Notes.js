@@ -24,10 +24,10 @@ class Notes extends React.Component {
                     return response.json().then(e => Promise.reject(e))
                 return response.json()
             .then(() => {
-                this.context.deleteNote(id)
+                this.props.history.push('/')
             })
             .then(() => {
-                this.props.history.push('/')
+                this.context.deleteNote(id)
             })
             .catch(error => {
                 console.error({ error })

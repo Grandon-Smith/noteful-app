@@ -7,14 +7,26 @@ import NotefulContext from '../NotefulContext'
 class GoBack extends React.Component {
     static contextType = NotefulContext;
 
-    render() {
+    getFolderName() {
         let folder = {};
-        if(this.props.match.path === "/notes/:noteid" ) {
-            let singleNote = this.context.data.selected.notes.filter(note =>
-                     this.props.match.params.noteid === note.id)
-            folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
-            console.log(folder)
-        } 
+        let singleNote = this.context.data.selected.notes.filter(note =>
+                    this.props.match.params.noteid === note.id)
+        folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
+        console.log(folder[0].name)
+
+        return 
+
+    }
+
+    render() {
+        // console.log(this.props)
+        // let folder = {};
+        // if(this.props.match.path === "/notes/:noteid" ) {
+            // let singleNote = this.context.data.selected.notes.filter(note =>
+            //          this.props.match.params.noteid === note.id)
+            // folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
+            // console.log(this.context, singleNote, folder)
+        // } 
             return (
                 <div>
                     <button 
@@ -22,7 +34,7 @@ class GoBack extends React.Component {
                         className="go-back-btn">
                             Go Back
                     </button>
-                    <h4>Folder: {folder[0].name === undefined ? "" : folder[0].name}</h4>
+                        <h4>Folder: { this.getFolderName()}</h4>
                 </div>
             )
     }
