@@ -8,9 +8,9 @@ class AddFolderForm extends React.Component {
 
     getRandomString(length) {
         //used to create a unique folderid
-        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var result = '';
-        for ( var i = 0; i < length; i++ ) {
+        let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for ( let i = 0; i < length; i++ ) {
             result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
         }
         return result;

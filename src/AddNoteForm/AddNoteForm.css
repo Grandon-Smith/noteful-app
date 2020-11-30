@@ -1,0 +1,20 @@
+legend {
+    font-size: 1.4rem;
+}
+
+form {
+    padding: 10px;
+}
+
+.note-field {
+display: flex;
+flex-direction: column;
+}
+
+fieldset {
+    border: none;
+}
+
+.input {
+    margin: 10px 0
+}

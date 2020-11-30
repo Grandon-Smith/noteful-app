@@ -17,13 +17,10 @@ class App extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            // data: data,
             selected: {
                 folders: [],
                 notes: [],
             },
-            // deleteNote: () => {},
-            // addFolder: () => {},
         }
     }
 
@@ -74,12 +71,31 @@ class App extends Component{
         })
     }
 
+    addNote = (id, name, folderId, content, modified) => {
+        console.log('ADD Note RAN')
+        let newNote = {
+            id: id,
+            name: name.value,
+            folderId: folderId,
+            content: content.value,
+            modified: modified,
+        };
+        this.setState({
+            selected: {
+                folders:[...this.state.selected.folders],
+                notes: [...this.state.selected.notes, newNote]
+            }
+        })
+    }
+
     render() {
         const value = {
             data: this.state,
             deleteNote: this.deleteNote,
-            addFolder: this.addFolder
+            addFolder: this.addFolder,
+            addNote: this.addNote,
         }
+        console.log(this.state.selected)
         return (
             <NotefulContext.Provider value={value}>
             <div className="App">
