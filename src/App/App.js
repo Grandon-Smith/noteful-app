@@ -75,7 +75,7 @@ class App extends Component{
     }
 
     addNote = (id, name, folderId, content, modified) => {
-        console.log('ADD Note RAN')
+        console.log(name)
         let newNote = {
             id: id,
             name: name.value,

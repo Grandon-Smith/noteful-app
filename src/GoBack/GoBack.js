@@ -7,14 +7,14 @@ import NotefulContext from '../NotefulContext'
 class GoBack extends React.Component {
     static contextType = NotefulContext;
 
-    getFolderName() {
+    getFolderName() { 
         let folder = {};
         let singleNote = this.context.data.selected.notes.filter(note =>
                     this.props.match.params.noteid === note.id)
         folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
         console.log(folder[0].name)
 
-        return 
+        return folder[0].name
 
     }
 
@@ -26,7 +26,7 @@ class GoBack extends React.Component {
             //          this.props.match.params.noteid === note.id)
             // folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
             // console.log(this.context, singleNote, folder)
-        // } 
+        // }
             return (
                 <div>
                     <button 
