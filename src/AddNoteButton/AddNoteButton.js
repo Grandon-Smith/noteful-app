@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './AddNote.css'
 
-function AddNote() {
+function AddNoteButton() {
     return (
         <Link to="/addNoteForm">
             <button 
@@ -14,4 +14,4 @@ function AddNote() {
 
 }
 
-export default AddNote
+export default AddNoteButton

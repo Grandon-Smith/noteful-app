@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './AddFolder.css'
 
-function AddFolder(props) {
+function AddFolderButton(props) {
         return (
             // <NotefulContext.Consumer>
             <Link to='/addFolderForm'>
@@ -16,4 +16,4 @@ function AddFolder(props) {
         )
 }
 
-export default AddFolder
+export default AddFolderButton

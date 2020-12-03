@@ -3,7 +3,7 @@ import NotefulContext from '../NotefulContext'
 import './AddNote.css'
 import ValidationError from './Validation';
 
-class AddNoteForm extends React.Component {
+class AddNote extends React.Component {
     static contextType = NotefulContext
 
     constructor(props) {
@@ -22,6 +22,7 @@ class AddNoteForm extends React.Component {
                 id: '',
                 touched: false,
             },
+            // hasError: false,
         }
     }
     updateName(name) {
@@ -72,10 +73,9 @@ class AddNoteForm extends React.Component {
             )
         })
     }
-
-
-
-
+    // getDerivedStateFromError(error) {
+    //     return {hasError: true};
+    // }
 
     handleAddNote = e => {
         e.preventDefault();
@@ -113,7 +113,12 @@ class AddNoteForm extends React.Component {
     }
 
     render() {
-        // console.log(this.state)
+        // if(this.state.hasError) {
+        //     return(
+        //         <h2>couldn't find the form</h2>
+        //     );
+        // }
+    
         return (
             <form 
                 onSubmit={e => this.handleAddNote(e)}
@@ -163,4 +168,4 @@ class AddNoteForm extends React.Component {
     }
 }
 
-export default AddNoteForm
+export default AddNote

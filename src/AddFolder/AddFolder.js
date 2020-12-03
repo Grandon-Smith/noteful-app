@@ -2,7 +2,7 @@ import React from 'react';
 import NotefulContext from '../NotefulContext'
 
 
-class AddFolderForm extends React.Component {
+class AddFolder extends React.Component {
 
     static contextType = NotefulContext;
 
@@ -63,7 +63,6 @@ class AddFolderForm extends React.Component {
                     <label htmlFor='folderName'>Folder Name: </label>
                     <input type="text" id="folderName" 
                         name="folderName"
-                        // ref={this.folderName}
                     />
                 </fieldset>
                 <button onClick={() => this.props.history.push('/')}>Cancel</button>
@@ -74,4 +73,4 @@ class AddFolderForm extends React.Component {
     }
 }
 
-export default AddFolderForm
+export default AddFolder

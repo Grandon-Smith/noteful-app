@@ -5,12 +5,12 @@ import Header from '../Header/Header';
 import { Switch, Route } from 'react-router-dom';
 import Folders from '../Folders/Folders';
 import Notes from '../Notes/Notes';
-import AddNote from '../AddNoteButton/AddNoteButton';
-import AddFolder from '../AddFolderButton/AddFolderButton';
+import AddNoteButton from '../AddNoteButton/AddNoteButton';
+import AddFolderButton from '../AddFolderButton/AddFolderButton';
 import GoBack from '../GoBack/GoBack';
 import NotefulContext from '../NotefulContext';
-import AddFolderForm from '../AddFolder/AddFolder';
-import AddNoteForm from '../AddNote/AddNote';
+import AddFolder from '../AddFolder/AddFolder';
+import AddNote from '../AddNote/AddNote';
 import ErrorBoundary from '../ErrorBoundary'
 import PropTypes from 'prop-types';
 
@@ -113,7 +113,7 @@ class App extends Component{
                                         <ErrorBoundary>
                                             <Folders />
                                         </ErrorBoundary>
-                                        <AddFolder/>
+                                        <AddFolderButton/>
                                     </nav>
                                     <section className="note-list">
                                         <ErrorBoundary>
@@ -121,7 +121,7 @@ class App extends Component{
                                                 {...props}
                                             />
                                         </ErrorBoundary>
-                                        <AddNote/>
+                                        <AddNoteButton/>
                                     </section>
                                     </div>
                                 </>
@@ -140,7 +140,7 @@ class App extends Component{
                                         <ErrorBoundary>
                                             <Folders />
                                         </ErrorBoundary>
-                                        <AddFolder/>
+                                        <AddFolderButton/>
                                     </nav>
                                     <section className="note-list">
                                         <ErrorBoundary>
@@ -148,7 +148,7 @@ class App extends Component{
                                                 {...props}
                                             />
                                         </ErrorBoundary>
-                                        <AddNote/>
+                                        <AddNoteButton/>
                                     </section>
                                     </div>
                                 </>
@@ -181,11 +181,11 @@ class App extends Component{
                     />
                     <Route
                         path='/addFolderForm'
-                        component={AddFolderForm}
+                        component={AddFolder}
                     />
                     <Route
                         path='/addNoteForm'
-                        component={AddNoteForm}
+                        component={AddNote}
                     />
                 </Switch>
             </div>
