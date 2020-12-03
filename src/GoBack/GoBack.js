@@ -1,6 +1,8 @@
 import React from 'react';
 import './GoBack.css'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types';
+
 
 
 
@@ -38,6 +40,9 @@ class GoBack extends React.Component {
                 </div>
             )
     }
+}
+GoBack.propTypes ={
+    props : PropTypes.object.isRequired
 }
 
 export default GoBack

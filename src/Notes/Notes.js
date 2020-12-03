@@ -2,6 +2,8 @@ import React from 'react';
 import './Notes.css'
 import { Link } from 'react-router-dom';
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types';
+
 
 
 class Notes extends React.Component {
@@ -35,6 +37,7 @@ class Notes extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         let notes = [];
         
         if(this.props.match.path === '/') {
@@ -87,7 +90,10 @@ class Notes extends React.Component {
             </div>
         )
     }
+}
 
+Notes.propTypes ={
+    match : PropTypes.object.isRequired
 }
 
 export default Notes

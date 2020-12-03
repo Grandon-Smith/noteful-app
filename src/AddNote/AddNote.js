@@ -2,6 +2,8 @@ import React from 'react';
 import NotefulContext from '../NotefulContext'
 import './AddNote.css'
 import ValidationError from './Validation';
+import PropTypes from 'prop-types';
+
 
 class AddNote extends React.Component {
     static contextType = NotefulContext
@@ -22,7 +24,6 @@ class AddNote extends React.Component {
                 id: '',
                 touched: false,
             },
-            // hasError: false,
         }
     }
     updateName(name) {
@@ -73,9 +74,6 @@ class AddNote extends React.Component {
             )
         })
     }
-    // getDerivedStateFromError(error) {
-    //     return {hasError: true};
-    // }
 
     handleAddNote = e => {
         e.preventDefault();
@@ -113,11 +111,6 @@ class AddNote extends React.Component {
     }
 
     render() {
-        // if(this.state.hasError) {
-        //     return(
-        //         <h2>couldn't find the form</h2>
-        //     );
-        // }
     
         return (
             <form 
@@ -166,6 +159,9 @@ class AddNote extends React.Component {
             </form>
         )
     }
+}
+AddNote.propTypes ={
+    history: PropTypes.object.isRequired
 }
 
 export default AddNote
