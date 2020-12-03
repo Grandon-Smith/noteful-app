@@ -72,14 +72,14 @@ class App extends Component{
         })
     }
 
-    addNote = (id, name, folderId, content, modified) => {
-        console.log(name)
+    addNote = ({body}) => {
         let newNote = {
-            id: id,
-            name: name.value,
-            folderId: folderId,
-            content: content.value,
-            modified: modified,
+            id: body.id,
+            name: body.name.value,
+            content: body.content.value,
+            modified: body.modified,
+            folderId: body.folderId,
+            
         };
         this.setState({
             selected: {

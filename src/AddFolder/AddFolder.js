@@ -57,7 +57,6 @@ class AddFolder extends React.Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <form onSubmit={e => this.handleAddFolder(e)}>
                 <fieldset>

@@ -100,7 +100,8 @@ class AddNote extends React.Component {
                     return response.json().then(e => Promise.reject(e))
                 return response.json()
             .then(() => {
-                this.context.addNote(noteId, name, folderName.id, content, body.modified)
+                // this.context.addNote(noteId, name.value, folderName.id, content, body.modified)
+                this.context.addNote({body})
             })
             .then(() => {
                 this.props.history.push('/')

@@ -4,7 +4,6 @@ import './AddFolder.css'
 
 function AddFolderButton(props) {
         return (
-            // <NotefulContext.Consumer>
             <Link to='/addFolderForm'>
                 <button 
                     className="add-folder-btn"
@@ -12,7 +11,6 @@ function AddFolderButton(props) {
                         Add Folder
                 </button>
             </Link>
-            // </NotefulContext.Consumer>
         )
 }
 
