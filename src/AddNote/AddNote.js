@@ -2,6 +2,7 @@ import React from 'react';
 import NotefulContext from '../NotefulContext'
 import './AddNote.css'
 import ValidationError from './Validation';
+import ErrorBoundary from '../ErrorBoundary'
 import PropTypes from 'prop-types';
 
 
@@ -105,7 +106,7 @@ class AddNote extends React.Component {
                 this.props.history.push('/')
             })
             .catch(error => {
-                console.error({ error })
+                <ErrorBoundary error={error}/>
             })
         })
     }

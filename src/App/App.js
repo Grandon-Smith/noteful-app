@@ -12,7 +12,6 @@ import NotefulContext from '../NotefulContext';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
 import ErrorBoundary from '../ErrorBoundary'
-import PropTypes from 'prop-types';
 
 
 
@@ -61,7 +60,6 @@ class App extends Component{
     };
 
     addFolder = (id, name) => {
-        console.log('ADD FOLDER RAN')
         let newFolder = {
             id: id,
             name: name,
@@ -101,6 +99,7 @@ class App extends Component{
         return (
             <NotefulContext.Provider value={value}>
             <div className="App">
+                <ErrorBoundary>
                 <Switch>
                     <Route
                         exact path='/'
@@ -163,9 +162,11 @@ class App extends Component{
                                     <Header/>
                                     <div className="group">
                                     <nav className="folder-list">
-                                        <GoBack
-                                            {...props}
-                                        />
+                                        <ErrorBoundary>
+                                            <GoBack
+                                                {...props}
+                                            />
+                                        </ErrorBoundary>
                                     </nav>
                                     <section className="note-list">
                                         <ErrorBoundary>
@@ -188,6 +189,7 @@ class App extends Component{
                         component={AddNote}
                     />
                 </Switch>
+                </ErrorBoundary>
             </div>
             </NotefulContext.Provider>
         );
