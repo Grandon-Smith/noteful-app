@@ -16,7 +16,6 @@ class GoBack extends React.Component {
         folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
 
         return folder[0].name
-
     }
 
     render() {
