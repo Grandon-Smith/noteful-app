@@ -9,12 +9,25 @@ import PropTypes from 'prop-types';
 class GoBack extends React.Component {
     static contextType = NotefulContext;
 
-    getFolderName() { 
+    // getFolderName = setTimeout(() => {
+    //     let folder = {};
+    //     let singleNote = this.context.data.selected.notes.filter(note =>
+    //     this.props.match.params.noteid === note.id)
+    //     folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
+    //     return folder[0].name
+    // }, 1000)
+    getFolderName() {
+    //     console.log('started')
+    //     setTimeout(() => {
+    //         console.log('going')
+
+    //     }, 2000);
+    //     console.log('ended')
+
         let folder = {};
         let singleNote = this.context.data.selected.notes.filter(note =>
-                    this.props.match.params.noteid === note.id)
+        this.props.match.params.noteid === note.id)
         folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
-
         return folder[0].name
     }
 
