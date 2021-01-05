@@ -74,10 +74,10 @@ class App extends Component{
     addNote = ({body}) => {
         let newNote = {
             id: body.id,
-            name: body.name.value,
-            content: body.content.value,
+            name: body.name,
+            content: body.content,
             modified: body.modified,
-            folderId: body.folderId,
+            folder_id: body.folder_id,
             
         };
         this.setState({

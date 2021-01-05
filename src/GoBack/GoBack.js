@@ -4,8 +4,6 @@ import NotefulContext from '../NotefulContext'
 import PropTypes from 'prop-types';
 
 
-
-
 class GoBack extends React.Component {
     static contextType = NotefulContext;
 
@@ -17,16 +15,13 @@ class GoBack extends React.Component {
     //     return folder[0].name
     // }, 1000)
     getFolderName() {
-    //     console.log('started')
-    //     setTimeout(() => {
-    //         console.log('going')
-
-    //     }, 2000);
-
         let folder = {};
-        let singleNote = this.context.data.selected.notes.filter(note =>
+        const {folders, notes} = this.context.data.selected
+        let singleNote = notes.filter(note =>
             parseInt(this.props.match.params.note_id) === note.id)
-        folder = this.context.data.selected.folders.filter(folder => folder.folder_id === singleNote[0].folder_id);
+        folder = folders.filter(folder => 
+            folder.folder_id === singleNote[0].folder_id);
+        console.log(folder)
         return folder[0].folder_name
     }
 
@@ -38,7 +33,10 @@ class GoBack extends React.Component {
                         className="go-back-btn">
                             Go Back
                     </button>
-                        <h4>Folder: { this.getFolderName()}</h4>
+                        <h4>Folder: {
+                         this.getFolderName()
+                        
+                        }</h4>
                 </div>
             )
     }

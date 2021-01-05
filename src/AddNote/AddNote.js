@@ -34,8 +34,8 @@ class AddNote extends React.Component {
         this.setState({content: {value: content, touched: true}});
     }
     updateFolderName(folderName) {
-        let folderId = this.context.data.selected.folders.filter(folder => folder.name === folderName)
-        let id = folderId[0].id
+        let folderId = this.context.data.selected.folders.filter(folder => folder.folder_name === folderName)
+        let id = folderId[0].folder_id
         this.setState({ 
             folderName: { value: folderName, id: id, touched: true } 
         });
@@ -55,7 +55,7 @@ class AddNote extends React.Component {
     }
     getRandomString(length) {
         //used to create a unique folderid
-        var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var randomChars = '0123456789';
         var result = '';
         for ( var i = 0; i < length; i++ ) {
             result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
@@ -66,11 +66,11 @@ class AddNote extends React.Component {
         return this.context.data.selected.folders.map((folder, idx) => {
             return(
             <option 
-                value={folder.name} 
+                value={folder.folder_name} 
                 key={idx}
-                id={folder.id}
+                id={folder.folder_id}
             >
-                    {folder.name}
+                    {folder.folder_name}
             </option>
             )
         })
@@ -78,17 +78,20 @@ class AddNote extends React.Component {
 
     handleAddNote = e => {
         e.preventDefault();
-        const newIdChars = this.getRandomString(3)
-        const noteId = `d26e0${newIdChars}-ffaf-11e8-8eb2-f2801f1b9fd1`
+        const newIdChars = this.getRandomString(4)
         const {name, content, folderName} = this.state
+        const noteId = `${newIdChars}`
+        const noteName = name.value
+        const noteContent = content.value
+        const f_Id =folderName.id
         let body = {
-            id: noteId,
-            name: name,
-            content: content,
-            folderId: folderName.id,
-            modified: 'now'
+            id: parseInt(noteId),
+            name: noteName,
+            content: noteContent,
+            folder_id: f_Id,
+            modified: "2019-01-03T00:00:00.000Z"
         };
-        fetch(`http://localhost:9090/notes`, {
+        fetch(`http://localhost:8000/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -96,8 +99,9 @@ class AddNote extends React.Component {
             body: JSON.stringify(body),
         })
             .then(response => {
-                if(!response.ok)
-                    return response.json().then(e => Promise.reject(e))
+                if(!response.ok) {
+                    return response.json().then(e => Promise.reject(e)) 
+                }
                 return response.json()
             .then(() => {
                 // this.context.addNote(noteId, name.value, folderName.id, content, body.modified)
@@ -113,7 +117,6 @@ class AddNote extends React.Component {
     }
 
     render() {
-    
         return (
             <form 
                 onSubmit={e => this.handleAddNote(e)}

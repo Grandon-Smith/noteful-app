@@ -21,10 +21,13 @@ class Notes extends React.Component {
             },
         })
             .then(response => {
+
                 if(!response.ok) 
+                    console.log('we didn\'t make it far')
                     return response.json().then(e => Promise.reject(e))
                 return response.json()
             .then(() => {
+                console.log('we made it this far')
                 this.props.history.push('/')
             })
             .then(() => {
