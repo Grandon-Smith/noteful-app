@@ -22,17 +22,15 @@ class GoBack extends React.Component {
     //         console.log('going')
 
     //     }, 2000);
-    //     console.log('ended')
 
         let folder = {};
         let singleNote = this.context.data.selected.notes.filter(note =>
-        this.props.match.params.noteid === note.id)
-        folder = this.context.data.selected.folders.filter(folder => folder.id === singleNote[0].folderId);
-        return folder[0].name
+            parseInt(this.props.match.params.note_id) === note.id)
+        folder = this.context.data.selected.folders.filter(folder => folder.folder_id === singleNote[0].folder_id);
+        return folder[0].folder_name
     }
 
     render() {
-
             return (
                 <div>
                     <button 
@@ -45,7 +43,7 @@ class GoBack extends React.Component {
             )
     }
 }
-GoBack.propTypes ={
+GoBack.propTypes = {
     props : PropTypes.object
 }
 

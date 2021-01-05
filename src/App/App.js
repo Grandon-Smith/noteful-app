@@ -1,4 +1,3 @@
-// import logo, { ReactComponent } from '../logo.svg';
 import React, {Component} from 'react';
 import './App.css';
 import Header from '../Header/Header';
@@ -28,8 +27,8 @@ class App extends Component{
 
     componentDidMount() {
         Promise.all([
-            fetch(`http://localhost:9090/notes`),
-            fetch(`http://localhost:9090/folders`)
+            fetch(`http://localhost:8000/notes`),
+            fetch(`http://localhost:8000/folders`)
         ])
             .then(([notesRes, foldersRes]) => {
                 if (!notesRes.ok)
@@ -61,8 +60,8 @@ class App extends Component{
 
     addFolder = (id, name) => {
         let newFolder = {
-            id: id,
-            name: name,
+            folder_id: id,
+            folder_name: name,
         };
         this.setState({
             selected: {
@@ -129,7 +128,7 @@ class App extends Component{
                     />
 
                     <Route
-                        exact path='/folders/:folderid'
+                        exact path='/folders/:folder_id'
                         render={(props) => {
                             return(
                                 <>
@@ -155,7 +154,7 @@ class App extends Component{
                         }}
                     />
                     <Route
-                        exact path='/notes/:noteid'
+                        exact path='/notes/:note_id'
                         render={(props) => {
                             return(
                                 <>

@@ -8,30 +8,20 @@ class AddFolder extends React.Component {
 
     static contextType = NotefulContext;
 
-    getRandomString(length) {
-        //used to create a unique folderid
-        let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
-        for ( let i = 0; i < length; i++ ) {
-            result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-        }
-        return result;
-    }
-
     handleAddFolder = e => {
         e.preventDefault();
-        const newIdChars = this.getRandomString(3)
-        const folderId = `b0715${newIdChars}-ffaf-11e8-8eb2-f2801f1b9fd1`;
+        // const newIdChars = this.getRandomString(3)
+        const folderId = this.context.data.selected.folders.length + 1;
         const folderName = e.target.folderName.value;
         if(folderName.length < 1) {
             alert('folders must be named!')
         } else {
             let body = {
-                id: folderId,
-                name: folderName,
+                folder_id: folderId,
+                folder_name: folderName,
             };
             
-            fetch(`http://localhost:9090/folders`, {
+            fetch(`http://localhost:8000/folders`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -57,6 +47,8 @@ class AddFolder extends React.Component {
 
 
     render() {
+        console.log(this.context)
+
         return (
             <form onSubmit={e => this.handleAddFolder(e)}>
                 <fieldset>

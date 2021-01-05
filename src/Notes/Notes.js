@@ -14,7 +14,7 @@ class Notes extends React.Component {
     handleDelete = e => {
         e.preventDefault()
         let id = (e.target.id)
-        fetch(`http://localhost:9090/notes/${id}`, {
+        fetch(`http://localhost:8000/notes/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -38,19 +38,18 @@ class Notes extends React.Component {
 
     render() {
         let notes = [];
-        
         if(this.props.match.path === '/') {
             notes = [...this.context.data.selected.notes];
         } 
-        else if (this.props.match.path === "/notes/:noteid") {
-            notes = this.context.data.selected.notes.filter(item => item.id === this.props.match.params.noteid)
+        else if (this.props.match.path === "/notes/:note_id") {
+            notes = this.context.data.selected.notes.filter(item => item.id === parseInt(this.props.match.params.note_id))
         } 
         else {
-            notes = this.context.data.selected.notes.filter(note => note.folderId === this.props.match.params.folderid);
+            notes = this.context.data.selected.notes.filter(note => note.folder_id === parseInt(this.props.match.params.folder_id));
         }
         const noteList = notes.map((obj, idx) => {
             return(
-                <div className="wrapper" id={obj.folderId} key={idx}>
+                <div className="wrapper" id={obj.id} key={idx}>
                     <Link to={`/notes/${obj.id}`}>
                         <button 
                             type="button"
@@ -77,7 +76,6 @@ class Notes extends React.Component {
                         ? ""
                         : notes[0].content}
                     </div>
-                    
                 </div>
             )
         })
