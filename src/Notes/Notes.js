@@ -14,32 +14,40 @@ class Notes extends React.Component {
     handleDelete = e => {
         e.preventDefault()
         let id = (e.target.id)
+        console.log(this.props)
         fetch(`http://localhost:8000/notes/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
             },
         })
-            .then(response => {
-
-                if(!response.ok) 
-                    console.log('we didn\'t make it far')
-                    return response.json().then(e => Promise.reject(e))
-                return response.json()
-            .then(() => {
-                console.log('we made it this far')
-                this.props.history.push('/')
-            })
-            .then(() => {
-                this.context.deleteNote(id)
-            })
-            .catch(error => {
-                console.error({ error })
-            })
+        .then(response => {
+            console.log('step 1')
+            if(!response.ok) {
+                console.log('step 1.5')
+                return response.json().then(e => Promise.reject(e))
+            }
+            // console.log('step 2')
+            // return response.json()
         })
+        .then(() => {
+            console.log('step 3')
+            this.context.deleteNote(id)
+        })
+        .then(() => {
+            console.log('step 4')
+            this.props.history.push('/')
+        })
+
+        .catch(error => {
+            console.error({ error })
+        })
+        
     }
 
     render() {
+        // console.log(this.props.match)
+        // console.log(this.context.data.selected)
         let notes = [];
         if(this.props.match.path === '/') {
             notes = [...this.context.data.selected.notes];

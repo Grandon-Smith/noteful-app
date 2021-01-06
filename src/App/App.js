@@ -48,14 +48,15 @@ class App extends Component{
             });
     }
 
-    deleteNote = id => {
-        let notes = this.state.selected.notes.filter(note => note.id !== id)
+    deleteNote = (id) => {
+        const notes = this.state.selected.notes.filter(note => note.id !== parseInt(id))
         this.setState({
             selected: {
                 folders: [...this.state.selected.folders],
                 notes: notes,
             }
         });
+
     };
 
     addFolder = (id, name) => {
