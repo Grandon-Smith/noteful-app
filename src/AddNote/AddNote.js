@@ -91,7 +91,7 @@ class AddNote extends React.Component {
             folder_id: f_Id,
             modified: "2019-01-03T00:00:00.000Z"
         };
-        fetch(`http://localhost:9090/notes`, {
+        fetch(`http://localhost:8000/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -21,7 +21,7 @@ class AddFolder extends React.Component {
                 folder_name: folderName,
             };
             
-            fetch(`http://localhost:9090/folders`, {
+            fetch(`http://localhost:8000/folders`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

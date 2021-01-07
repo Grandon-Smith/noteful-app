@@ -15,7 +15,7 @@ class Notes extends React.Component {
         e.preventDefault()
         let id = (e.target.id)
         console.log(this.props)
-        fetch(`http://localhost:9090/notes/${id}`, {
+        fetch(`http://localhost:8000/notes/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

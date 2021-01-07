@@ -27,8 +27,8 @@ class App extends Component{
 
     componentDidMount() {
         Promise.all([
-            fetch(`http://localhost:9090/notes`),
-            fetch(`http://localhost:9090/folders`)
+            fetch(`http://localhost:8000/notes`),
+            fetch(`http://localhost:8000/folders`)
         ])
             .then(([notesRes, foldersRes]) => {
                 if (!notesRes.ok)
