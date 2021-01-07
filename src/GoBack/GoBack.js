@@ -11,11 +11,10 @@ class GoBack extends React.Component {
         let folder = {};
         const {folders, notes} = this.context.data.selected
         let singleNote = notes.filter(note =>
-            parseInt(this.props.match.params.note_id) === note.id)
+            this.props.match.params.id === note.id)
         folder = folders.filter(folder => 
-            folder.folder_id === singleNote[0].folder_id);
-        // console.log(folder)
-        return folder[0]?.folder_name
+            folder.id === singleNote[0].folderId);
+        return folder[0]?.name
     }
 
     render() {

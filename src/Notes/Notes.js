@@ -31,14 +31,13 @@ class Notes extends React.Component {
             // return response.json()
         })
         .then(() => {
-            console.log('step 3')
-            this.context.deleteNote(id)
-        })
-        .then(() => {
             console.log('step 4')
             this.props.history.push('/')
         })
-
+        .then(() => {
+            console.log('step 3')
+            this.context.deleteNote(id)
+        })
         .catch(error => {
             console.error({ error })
         })
@@ -46,17 +45,15 @@ class Notes extends React.Component {
     }
 
     render() {
-        // console.log(this.props.match)
-        // console.log(this.context.data.selected)
         let notes = [];
         if(this.props.match.path === '/') {
             notes = [...this.context.data.selected.notes];
         } 
-        else if (this.props.match.path === "/notes/:note_id") {
-            notes = this.context.data.selected.notes.filter(item => item.id === parseInt(this.props.match.params.note_id))
+        else if (this.props.match.path === "/notes/:id") {
+            notes = this.context.data.selected.notes.filter(item => item.id === this.props.match.params.id)
         } 
         else {
-            notes = this.context.data.selected.notes.filter(note => note.folder_id === parseInt(this.props.match.params.folder_id));
+            notes = this.context.data.selected.notes.filter(note => note.folderId === this.props.match.params.folderId);
         }
         const noteList = notes.map((obj, idx) => {
             return(

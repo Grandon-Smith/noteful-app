@@ -34,8 +34,8 @@ class AddNote extends React.Component {
         this.setState({content: {value: content, touched: true}});
     }
     updateFolderName(folderName) {
-        let folderId = this.context.data.selected.folders.filter(folder => folder.folder_name === folderName)
-        let id = folderId[0].folder_id
+        let folderId = this.context.data.selected.folders.filter(folder => folder.name === folderName)
+        let id = folderId[0].id
         this.setState({ 
             folderName: { value: folderName, id: id, touched: true } 
         });
@@ -55,7 +55,7 @@ class AddNote extends React.Component {
     }
     getRandomString(length) {
         //used to create a unique folderid
-        var randomChars = '0123456789';
+        var randomChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         var result = '';
         for ( var i = 0; i < length; i++ ) {
             result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
@@ -66,11 +66,11 @@ class AddNote extends React.Component {
         return this.context.data.selected.folders.map((folder, idx) => {
             return(
             <option 
-                value={folder.folder_name} 
+                value={folder.name} 
                 key={idx}
-                id={folder.folder_id}
+                id={folder.id}
             >
-                    {folder.folder_name}
+                    {folder.name}
             </option>
             )
         })
@@ -78,18 +78,18 @@ class AddNote extends React.Component {
 
     handleAddNote = e => {
         e.preventDefault();
-        const newIdChars = this.getRandomString(4)
+        const newIdChars = this.getRandomString(15)
         const {name, content, folderName} = this.state
         const noteId = `${newIdChars}`
         const noteName = name.value
         const noteContent = content.value
         const f_Id =folderName.id
         let body = {
-            id: parseInt(noteId),
+            id: noteId,
             name: noteName,
             content: noteContent,
-            folder_id: f_Id,
-            modified: "2019-01-03T00:00:00.000Z"
+            folderId: f_Id,
+            modified: Date.now()
         };
         fetch(`http://localhost:9090/notes`, {
             method: 'POST',

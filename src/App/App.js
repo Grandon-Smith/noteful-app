@@ -49,7 +49,7 @@ class App extends Component{
     }
 
     deleteNote = (id) => {
-        const notes = this.state.selected.notes.filter(note => note.id !== parseInt(id))
+        const notes = this.state.selected.notes.filter(note => note.id !== id)
         this.setState({
             selected: {
                 folders: [...this.state.selected.folders],
@@ -61,8 +61,8 @@ class App extends Component{
 
     addFolder = (id, name) => {
         let newFolder = {
-            folder_id: id,
-            folder_name: name,
+            id: id,
+            name: name,
         };
         this.setState({
             selected: {
@@ -78,7 +78,7 @@ class App extends Component{
             name: body.name,
             content: body.content,
             modified: body.modified,
-            folder_id: body.folder_id,
+            folderId: body.folderId,
             
         };
         this.setState({
@@ -129,7 +129,7 @@ class App extends Component{
                     />
 
                     <Route
-                        exact path='/folders/:folder_id'
+                        exact path='/folders/:folderId'
                         render={(props) => {
                             return(
                                 <>
@@ -155,7 +155,7 @@ class App extends Component{
                         }}
                     />
                     <Route
-                        exact path='/notes/:note_id'
+                        exact path='/notes/:id'
                         render={(props) => {
                             return(
                                 <>

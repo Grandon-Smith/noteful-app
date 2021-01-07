@@ -12,14 +12,14 @@ class Folders extends React.Component {
         let folder = this.context.data.selected.folders
         let folderList = folder.map((obj, idx) => {
                 return (
-                    <div className="folder" key={idx} id={obj.folder_id}>
-                        <Link to={`/folders/${obj.folder_id}`}>
+                    <div className="folder" key={idx} id={obj.id}>
+                        <Link to={`/folders/${obj.id}`}>
                             <button
                                 type="button"
                                 className="folder-button"
-                                id={obj.folder_id}
+                                id={obj.id}
                             >
-                                    {obj.folder_name}
+                                    {obj.name}
                             </button>
                         </Link>
                     </div>
